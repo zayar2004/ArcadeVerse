@@ -1,0 +1,50 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Next.js Build Output
+/.next/
+/out/
+/build
+/dist
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment & Secrets (Crucial)
+.env
+.env*.local
+.env.production
+.env.development
+.env.test
+
+# Vercel & Deployment
+.vercel
+
+# TypeScript Cache
+*.tsbuildinfo
+
+# Database local files & backups
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+
+# OS & Editor Files
+.DS_Store
+Thumbs.db
+*.pem
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Termux & Android Runtime Artifacts
+*.apk
+*.dex
+.bash_history
