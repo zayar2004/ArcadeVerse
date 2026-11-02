@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --arcade-bg: #070913;
+  --arcade-cyan: #00f0ff;
+  --arcade-magenta: #ff007f;
+  --arcade-amber: #ffb800;
+}
+
+body {
+  background-color: var(--arcade-bg);
+  color: #f0f4fc;
+  min-height: 100vh;
+  -webkit-tap-highlight-color: transparent;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 240, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(circle at 100% 100%, rgba(255, 0, 127, 0.06) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 28px 28px, 28px 28px;
+}
