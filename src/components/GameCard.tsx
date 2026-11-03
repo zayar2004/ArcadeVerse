@@ -1,9 +1,10 @@
 import React from "react";
+import { Icon, IconName } from "@/components/Icon";
 
 interface GameCardProps {
   title: string;
   genre: string;
-  icon: string;
+  icon: IconName;
   comingSoonText: string;
 }
 
@@ -14,22 +15,23 @@ export const GameCard: React.FC<GameCardProps> = ({
   comingSoonText,
 }) => {
   return (
-    <article className="p-4 rounded-2xl bg-arcade-card/70 backdrop-blur-md border border-arcade-cardBorder flex items-center justify-between gap-3 shadow-md hover:border-arcade-cyan/40 transition-all">
-      <div className="flex items-center gap-3.5 min-w-0">
-        <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl flex-shrink-0 shadow-inner">
-          {icon}
+    <article className="flex items-center justify-between gap-3 rounded-2xl border border-arcade-cardBorder bg-arcade-card/70 p-4 shadow-md backdrop-blur-md transition-all hover:border-arcade-cyan/40">
+      <div className="flex min-w-0 items-center gap-3.5">
+        <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-arcade-cyan/20 bg-arcade-cyan/10 text-arcade-cyan shadow-inner">
+          <Icon name={icon} size={25} strokeWidth={1.7} />
         </div>
-        <div className="flex flex-col min-w-0">
-          <h3 className="text-sm font-bold text-white tracking-wide truncate">
+
+        <div className="flex min-w-0 flex-col">
+          <h3 className="truncate text-sm font-bold tracking-wide text-white">
             {title}
           </h3>
-          <span className="text-[11px] font-semibold text-arcade-muted uppercase tracking-wider">
+          <span className="text-[11px] font-semibold uppercase tracking-wider text-arcade-muted">
             {genre}
           </span>
         </div>
       </div>
 
-      <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-arcade-amber/15 text-arcade-amber border border-arcade-amber/40 whitespace-nowrap shadow-[0_0_8px_rgba(255,184,0,0.2)]">
+      <span className="whitespace-nowrap rounded-full border border-arcade-amber/40 bg-arcade-amber/15 px-2.5 py-1 text-[10px] font-black uppercase tracking-wider text-arcade-amber">
         {comingSoonText}
       </span>
     </article>

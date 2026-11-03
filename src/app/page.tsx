@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Header } from "@/components/Header";
 import { BottomNav, NavTab } from "@/components/BottomNav";
 import { GameCard } from "@/components/GameCard";
+import { Icon } from "@/components/Icon";
 import { SupportedLanguage, translations } from "@/lib/i18n";
 
 export default function HomePage() {
@@ -28,19 +29,19 @@ export default function HomePage() {
     {
       title: "Cyber Drift 2099",
       genre: currentLang === "my" ? "နီယွန် ပြိုင်ကားဂိမ်း" : "Neon Racing",
-      icon: "🏎️",
+      icon: "car",
     },
     {
       title: "Neon Strike",
       genre: currentLang === "my" ? "အာကိတ် ပစ်ခတ်ဂိမ်း" : "Retro Shooter",
-      icon: "👾",
+      icon: "alien",
     },
     {
       title: "Quantum Arena",
       genre: currentLang === "my" ? "ဗျူဟာမြောက် တိုက်ခိုက်ရေး" : "Tactical Battle",
-      icon: "⚔️",
+      icon: "swords",
     },
-  ];
+  ] as const;
 
   return (
     <div className="flex-1 flex flex-col">
@@ -52,7 +53,7 @@ export default function HomePage() {
           <>
             {/* Disclaimer Banner: No real money */}
             <div className="p-3 rounded-xl bg-arcade-amber/10 border border-arcade-amber/30 text-arcade-amber text-xs leading-relaxed flex items-start gap-2.5 shadow-sm">
-              <span className="text-base flex-shrink-0">⚠️</span>
+              <span className="text-base flex-shrink-0"><Icon name="alert" size={18} /></span>
               <div>
                 <p className="font-bold uppercase tracking-wider text-[11px] mb-0.5">
                   {t.demoModeBadge}
@@ -67,7 +68,7 @@ export default function HomePage() {
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-arcade-amber to-transparent" />
                 <div className="flex items-center gap-2 mb-1.5">
                   <div className="w-6 h-6 rounded bg-arcade-amber/20 text-arcade-amber flex items-center justify-center text-xs">
-                    🪙
+                    <Icon name="coin" size={36} />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-arcade-muted">
                     {t.balances.demoCoins}
@@ -83,7 +84,7 @@ export default function HomePage() {
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-arcade-magenta to-transparent" />
                 <div className="flex items-center gap-2 mb-1.5">
                   <div className="w-6 h-6 rounded bg-arcade-magenta/20 text-arcade-magenta flex items-center justify-center text-xs">
-                    🎟️
+                    <Icon name="ticket" size={20} />
                   </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-arcade-muted">
                     {t.balances.demoTickets}
@@ -103,7 +104,7 @@ export default function HomePage() {
                 onClick={handleTestInteraction}
                 className="w-full min-h-[50px] rounded-xl font-black tracking-wider uppercase text-sm text-white bg-gradient-to-r from-arcade-cyan via-blue-600 to-arcade-magenta shadow-[0_4px_16px_rgba(0,114,255,0.35)] active:scale-95 transition-all flex items-center justify-center gap-2"
               >
-                <span>⚡</span>
+                <span><Icon name="zap" size={18} /></span>
                 <span>{currentLang === "my" ? "စမ်းသပ်အသုံးပြုရန် နှိပ်ပါ" : "Test Interaction"}</span>
               </button>
 
@@ -114,7 +115,7 @@ export default function HomePage() {
                 role="status"
                 aria-live="polite"
               >
-                <span>✨</span>
+                <span><Icon name="check" size={18} /></span>
                 <span>{currentLang === "my" ? "စမ်းသပ်မှု အောင်မြင်ပါသည်!" : "Interaction Successful!"}</span>
               </div>
             </section>
@@ -165,7 +166,7 @@ export default function HomePage() {
         {/* TAB 3: WALLET PLACEHOLDER */}
         {activeTab === "wallet" && (
           <section className="p-6 rounded-2xl bg-arcade-card/80 border border-arcade-cardBorder text-center flex flex-col items-center gap-3">
-            <span className="text-4xl">🪙</span>
+            <span className="text-4xl"><Icon name="coin" size={36} /></span>
             <h2 className="text-base font-extrabold text-white">{t.walletSection.title}</h2>
             <p className="text-xs text-arcade-muted leading-relaxed max-w-xs">
               {t.walletSection.notice}
@@ -179,7 +180,7 @@ export default function HomePage() {
         {/* TAB 4: PRIZES PLACEHOLDER */}
         {activeTab === "prizes" && (
           <section className="p-6 rounded-2xl bg-arcade-card/80 border border-arcade-cardBorder text-center flex flex-col items-center gap-3">
-            <span className="text-4xl">🎁</span>
+            <span className="text-4xl"><Icon name="gift" size={36} /></span>
             <h2 className="text-base font-extrabold text-white">{t.prizesSection.title}</h2>
             <p className="text-xs text-arcade-muted leading-relaxed max-w-xs">
               {t.prizesSection.notice}
@@ -193,7 +194,7 @@ export default function HomePage() {
         {/* TAB 5: PROFILE PLACEHOLDER */}
         {activeTab === "profile" && (
           <section className="p-6 rounded-2xl bg-arcade-card/80 border border-arcade-cardBorder text-center flex flex-col items-center gap-3">
-            <span className="text-4xl">👤</span>
+            <span className="text-4xl"><Icon name="user" size={36} /></span>
             <h2 className="text-base font-extrabold text-white">{t.profileSection.title}</h2>
             <p className="text-xs text-arcade-muted leading-relaxed max-w-xs">
               {t.profileSection.notice}
