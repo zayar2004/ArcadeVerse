@@ -1,0 +1,41 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1793697247235,
+      "tag": "0000_phase3_database_hardening",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793697482942,
+      "tag": "0001_phase3_integrity_constraints",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1793697831858,
+      "tag": "0002_phase3_ledger_restrict_delete",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1793698748445,
+      "tag": "0003_auth_rate_limits",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1793706141605,
+      "tag": "0004_wallet_coin_types",
+      "breakpoints": true
+    }
+  ]
+}

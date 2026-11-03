@@ -15,7 +15,11 @@ export type IconName =
   | "alien"
   | "swords"
   | "close"
-  | "chevron-right";
+  | "chevron-right"
+  | "copy"
+  | "log-out"
+  | "eye"
+  | "eye-off";
 
 interface IconProps {
   name: IconName;
@@ -54,6 +58,10 @@ export function Icon({
     swords: <><path d="m5 3 16 16M19 3 3 19" /><path d="m5 3 4 1-3 3-1-4Zm14 0-4 1 3 3 1-4ZM3 19l4-1-3-3-1 4Zm18 0-4-1 3-3 1 4Z" /></>,
     close: <><path d="m6 6 12 12M18 6 6 18" /></>,
     "chevron-right": <path d="m9 18 6-6-6-6" />,
+    copy: <><rect x="8" y="8" width="12" height="12" rx="2" /><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3" /></>,
+    "log-out": <><path d="M10 17l5-5-5-5" /><path d="M15 12H3" /><path d="M12 3h6a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-6" /></>,
+    eye: <><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></>,
+    "eye-off": <><path d="m3 3 18 18" /><path d="M10.6 10.6a2 2 0 0 0 2.8 2.8" /><path d="M9.9 5.2A11 11 0 0 1 12 5c6.5 0 10 7 10 7a15 15 0 0 1-3 3.8M6.2 6.2C3.5 8.1 2 12 2 12s3.5 7 10 7c1.4 0 2.7-.3 3.8-.8" /></>,
   };
 
   return (

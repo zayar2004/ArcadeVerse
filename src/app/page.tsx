@@ -1,21 +1,42 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "@/components/Header";
 import { BottomNav, NavTab } from "@/components/BottomNav";
 import { GameCard } from "@/components/GameCard";
 import { Icon } from "@/components/Icon";
 import { SupportedLanguage, translations } from "@/lib/i18n";
+import { AuthPanel } from "@/components/AuthPanel";
+import { WalletPanel } from "@/components/WalletPanel";
 
 export default function HomePage() {
   const [currentLang, setCurrentLang] = useState<SupportedLanguage>("my");
   const [activeTab, setActiveTab] = useState<NavTab>("home");
   const [interactionToast, setInteractionToast] = useState<boolean>(false);
 
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("arcadeverse_language");
+      if (saved === "my" || saved === "en") {
+        setCurrentLang(saved);
+      }
+    } catch {
+      // Keep the default language if storage is unavailable.
+    }
+  }, []);
+
   const t = translations[currentLang];
 
   const handleToggleLang = () => {
-    setCurrentLang((prev) => (prev === "my" ? "en" : "my"));
+    setCurrentLang((prev) => {
+      const next = prev === "my" ? "en" : "my";
+      try {
+        localStorage.setItem("arcadeverse_language", next);
+      } catch {
+        // Language switching still works for this session.
+      }
+      return next;
+    });
   };
 
   const handleTestInteraction = () => {
@@ -163,18 +184,9 @@ export default function HomePage() {
           </section>
         )}
 
-        {/* TAB 3: WALLET PLACEHOLDER */}
+        {/* TAB 3: WALLET */}
         {activeTab === "wallet" && (
-          <section className="p-6 rounded-2xl bg-arcade-card/80 border border-arcade-cardBorder text-center flex flex-col items-center gap-3">
-            <span className="text-4xl"><Icon name="coin" size={36} /></span>
-            <h2 className="text-base font-extrabold text-white">{t.walletSection.title}</h2>
-            <p className="text-xs text-arcade-muted leading-relaxed max-w-xs">
-              {t.walletSection.notice}
-            </p>
-            <span className="text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full bg-arcade-cyan/15 text-arcade-cyan border border-arcade-cyan/30">
-              Phase 3 Ledger & DB Target
-            </span>
-          </section>
+          <WalletPanel currentLang={currentLang} />
         )}
 
         {/* TAB 4: PRIZES PLACEHOLDER */}
@@ -191,17 +203,15 @@ export default function HomePage() {
           </section>
         )}
 
-        {/* TAB 5: PROFILE PLACEHOLDER */}
+        {/* TAB 5: PROFILE + AUTHENTICATION */}
         {activeTab === "profile" && (
-          <section className="p-6 rounded-2xl bg-arcade-card/80 border border-arcade-cardBorder text-center flex flex-col items-center gap-3">
-            <span className="text-4xl"><Icon name="user" size={36} /></span>
-            <h2 className="text-base font-extrabold text-white">{t.profileSection.title}</h2>
-            <p className="text-xs text-arcade-muted leading-relaxed max-w-xs">
-              {t.profileSection.notice}
-            </p>
-            <span className="text-[10px] uppercase font-bold tracking-wider px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
-              Auth.js & RBAC Target
-            </span>
+          <section className="flex flex-col gap-4">
+            <div className="px-1">
+              <h2 className="text-xs font-black uppercase tracking-widest text-arcade-muted">
+                {t.profileSection.title}
+              </h2>
+            </div>
+            <AuthPanel currentLang={currentLang} />
           </section>
         )}
       </main>
